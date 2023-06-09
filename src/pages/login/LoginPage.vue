@@ -3,7 +3,8 @@
     <div class="container column">
       <div class="login-page-description">
         <h1 class="text-weight-bold">Sign In</h1>
-        <h3 class="text-weight-medium">Please enter your credentials to access your account</h3>
+        <h3 class="text-weight-medium">Return to your sustainability journey.
+          Log in to track your progress and set new goals</h3>
       </div>
       <div id="login-form">
         <q-form
@@ -15,6 +16,8 @@
             v-model="username"
             label="Username"
             stack-label
+            hide-bottom-space
+            :rules="[val => !!val || 'Field is required']"
           />
 
           <q-input
@@ -23,6 +26,8 @@
             type="password"
             label="Password"
             stack-label
+            hide-bottom-space
+            :rules="[val => !!val || 'Field is required']"
           />
 
           <div>
@@ -38,6 +43,10 @@
             />
           </div>
         </q-form>
+        <div class="block text-center q-ma-lg">
+          New user?
+          <router-link :to="{ name: 'register' }">Register here</router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -75,6 +84,6 @@ h3 {
 }
 
 #login-form {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 </style>
