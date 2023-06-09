@@ -42,31 +42,16 @@
     </div>
   </div>
 </template>
-<script>
+<script setup>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
 
-export default {
-  setup() {
-    const $q = useQuasar();
+const $q = useQuasar();
 
-    const username = ref(null);
-    const password = ref(null);
+const username = ref(null);
+const password = ref(null);
 
-    const isLoading = ref(false);
-
-    return {
-      username,
-      password,
-
-      isLoading,
-
-      onSubmit() {
-        console.log('test');
-      },
-    };
-  },
-};
+const isLoading = ref(false);
 </script>
 
 <style lang="scss" scoped>
