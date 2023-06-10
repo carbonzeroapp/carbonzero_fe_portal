@@ -51,7 +51,7 @@
         <q-input outlined v-model="dateOfBirth"
                  label="Date of Birth" stack-label
                  hide-bottom-space
-                 mask="date" :rules="[date]">
+                 mask="date" :rules="[date, val => !!val || 'Field is required']">
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer">
               <q-popup-proxy cover transition-show="scale" transition-hide="scale">

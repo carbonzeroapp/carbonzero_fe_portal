@@ -13,7 +13,7 @@
         arrows
         infinite
         id="intro-carousel"
-        class="text-white shadow-1 rounded-borders full-height"
+        class="text-white shadow-1 full-height"
       >
         <q-carousel-slide class="column no-wrap flex-center"
                           v-for="item in slideItems"
