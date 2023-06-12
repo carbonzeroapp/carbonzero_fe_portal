@@ -9,7 +9,7 @@
       <div id="login-form">
         <q-form
           @submit="onSubmit"
-          class="q-gutter-md"
+          class="q-gutter-md q-mb-lg"
         >
           <q-input
             outlined
@@ -43,24 +43,69 @@
             />
           </div>
         </q-form>
+
         <div class="block text-center q-ma-lg">
           New user?
           <router-link :to="{ name: 'register' }">Register here</router-link>
         </div>
+
+        <!-- non field alerts -->
+        <the-alert
+          v-if="serializedErrors[1]"
+          :type="'danger'"
+          :message="serializedErrors[1].join(', ')"
+        />
+
+        <!-- text error alerts -->
+        <the-alert
+          v-if="serializedErrors[2]"
+          :type="'danger'"
+          :message="serializedErrors[2]"
+        />
       </div>
     </div>
   </div>
 </template>
 <script setup>
-import { useQuasar } from 'quasar';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+import { AuthService } from 'src/services/auth.service';
+import { serializeBEError } from 'src/services/utils';
+import TheAlert from 'components/TheAlert.vue';
+import { useRouter } from 'vue-router';
+import { Notify } from 'quasar';
 
-const $q = useQuasar();
+const router = useRouter();
+
+const errors = ref({});
+
+const serializedErrors = computed(() => serializeBEError(errors.value));
 
 const username = ref(null);
 const password = ref(null);
 
 const isLoading = ref(false);
+
+async function onSubmit() {
+  errors.value = {};
+  isLoading.value = true;
+
+  try {
+    await AuthService.login({
+      username: username.value,
+      password: password.value,
+    });
+
+    await router.push('/');
+
+    Notify.create({
+      type: 'info',
+      message: 'Login success',
+    });
+  } catch (error) {
+    errors.value = error.message;
+  }
+  isLoading.value = false;
+}
 </script>
 
 <style lang="scss" scoped>
