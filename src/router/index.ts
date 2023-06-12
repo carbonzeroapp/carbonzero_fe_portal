@@ -1,4 +1,3 @@
-import { route } from 'quasar/wrappers';
 import {
   createMemoryHistory,
   createRouter,
@@ -6,6 +5,7 @@ import {
   createWebHistory,
 } from 'vue-router';
 
+import { checkAccessMiddleware } from 'src/router/middleware';
 import routes from './routes';
 
 /*
@@ -30,5 +30,7 @@ const Router = createRouter({
   // quasar.conf.js -> build -> publicPath
   history: createHistory(process.env.VUE_ROUTER_BASE),
 });
+
+Router.beforeEach(checkAccessMiddleware);
 
 export default Router;
