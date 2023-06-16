@@ -17,6 +17,10 @@ export interface RegisterFields {
   password2: string,
 }
 
+export type ButtonSizes = 'small' | 'normal' | 'large';
+
+export type ButtonTypes = 'primary' | 'secondary' | 'tertiary' | 'disabled';
+
 export type AlertTypes = 'success' | 'info' | 'warning' | 'error';
 
 export interface GenderOption {

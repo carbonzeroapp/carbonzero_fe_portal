@@ -5,6 +5,10 @@ import RegisterPage from 'pages/register/RegisterPage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
+    path: '/onboarding',
+    component: () => import('pages/onboarding/OnboardingPage.vue'),
+  },
+  {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     meta: { isRequireAuth: true },
