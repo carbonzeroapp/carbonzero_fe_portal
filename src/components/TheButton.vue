@@ -1,11 +1,13 @@
 <template>
   <q-btn
     :loading="isLoading"
+    id="the-button"
     :class="`${buttonClassByType} ${buttonClassBySize} text-weight-bold`"
     :label="label"
     :type="type"
     rounded
     no-caps
+    flat
   />
 </template>
 <script setup lang="ts">
@@ -46,6 +48,9 @@ const buttonClassBySize = computed(() => ({
 
 </script>
 <style lang="scss" scoped>
+#the-button {
+  line-height: 0;
+}
 @mixin by-type-style {
   background: $primary;
   color: white;
@@ -60,6 +65,15 @@ const buttonClassBySize = computed(() => ({
   border: 2px solid $primary;
   color: $primary;
 }
+.tertiary-btn {
+  @include by-type-style;
+  background: transparent;
+  color: #fff;
+
+  &:before {
+    box-shadow: none !important;
+  }
+}
 
 @mixin by-size-style {
   display: flex;
@@ -70,7 +84,8 @@ const buttonClassBySize = computed(() => ({
   font-size: 12px;
 }
 .medium-btn {
-  padding: 12px 20px;
+  @include by-size-style;
+  padding: 10px 40px;
   font-size: 16px;
 }
 .large-btn {
