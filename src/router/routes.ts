@@ -6,7 +6,13 @@ import RegisterPage from 'pages/register/RegisterPage.vue';
 const routes: RouteRecordRaw[] = [
   {
     path: '/onboarding',
+    name: 'onboarding',
     component: () => import('pages/onboarding/OnboardingPage.vue'),
+  },
+  {
+    path: '/get-started',
+    name: 'get-started',
+    component: () => import('pages/getStarted/GetStartedPage.vue'),
   },
   {
     path: '/',
