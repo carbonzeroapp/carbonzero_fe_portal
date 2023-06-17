@@ -16,17 +16,22 @@
       </div>
     </div>
     <div class="get-started-btn q-mt-lg">
-      <the-button type="primary" label="Get Started" size="large"/>
+      <the-button label="Get Started"
+                  @click="$router.push('/get-started')"
+                  size="large"
+                  type="primary"/>
     </div>
     <div class="login-btn q-mt-md">
-      <the-button type="secondary" label="Login" size="large"/>
+      <the-button label="Login"
+                  size="large"
+                  type="secondary"
+                  @click="$router.push({ 'name': 'login' })"/>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import TheButton from 'components/TheButton.vue';
-
 </script>
 
 <style scoped lang="scss">
