@@ -17,12 +17,12 @@ export function checkAccessMiddleware(
   if (isAuthRoute && AuthService.getAccessToken()) return next();
 
   if (isAuthRoute) {
-    next({ name: 'login' });
-
     Notify.create({
       type: 'negative',
       message: 'You need to sign in first',
     });
+
+    return next({ name: 'login' });
   }
 
   next();

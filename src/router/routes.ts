@@ -15,6 +15,11 @@ const routes: RouteRecordRaw[] = [
     component: () => import('pages/getStarted/GetStartedPage.vue'),
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('pages/login/LoginPage.vue'),
+  },
+  {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     meta: { isRequireAuth: true },
@@ -24,14 +29,11 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     component: () => import('layouts/LoginSignupLayout.vue'),
     children: [
-      {
-        path: 'login',
-        name: 'login',
-        components: {
-          left: IntroPage,
-          right: LoginPage,
-        },
-      },
+      // {
+      //   path: 'login',
+      //   name: 'login',
+      //   component: () => import('pages/login/LoginPage.vue'),
+      // },
       {
         path: 'register',
         name: 'register',

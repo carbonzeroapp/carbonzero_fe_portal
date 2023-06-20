@@ -1,19 +1,32 @@
 <template>
-  <q-layout>
-    <q-page-container>
-      <div class="container row window-height">
-        <div class="col-12 col-md-7 order-last order-md-first window-height">
-          <router-view name="left"></router-view>
-        </div>
-
-        <div class="col row flex-center order-first order-md-last q-px-xl">
-          <div class="full-width">
-            <router-view name="right"></router-view>
-          </div>
-        </div>
+  <div id="login-signup-layout" class="q-pa-xl">
+    <header>
+      <div class="header-title text-weigh text-weight-bold">
+        <slot name="header-title"></slot>
       </div>
-    </q-page-container>
-  </q-layout>
+      <div class="header-description text-weight-light q-mt-sm">
+        <slot name="header-description"></slot>
+      </div>
+    </header>
+
+    <div class="body">
+      <slot></slot>
+    </div>
+  </div>
 </template>
 <script setup lang="ts">
 </script>
+<style scoped lang="scss">
+header {
+  .header-title {
+    font-size: 20px;
+  }
+  .header-description {
+    font-size: 12px;
+    color: $grey-6;
+  }
+}
+.body {
+  margin-top: 40px;
+}
+</style>

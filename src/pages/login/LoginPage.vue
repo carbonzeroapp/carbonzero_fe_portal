@@ -1,12 +1,26 @@
 <template>
-  <div id="login-page">
-    <div class="container column">
-      <div class="login-page-description">
-        <h1 class="text-weight-bold">Sign In</h1>
-        <h3 class="text-weight-medium">Return to your sustainability journey.
-          Log in to track your progress and set new goals</h3>
+  <LoginSignupLayout>
+    <template #header-title>
+      Sign In
+    </template>
+    <template #header-description>
+      Reduce your carbon footprint, protect our planet
+    </template>
+    <template #default>
+      <div id="headline">
+        <div class="logo">
+          <q-img
+            src="~/assets/carbon-zero-logo-big.svg"
+          />
+        </div>
+        <div class="description q-mt-md">
+          Don't wait for <span class="text-weight-bold">tomorrow,</span> start
+          <span class="text-weight-bold">now</span> for
+          <span class="text-primary text-weight-bold">zero carbon,
+            zero emissions, zero problems.</span>
+        </div>
       </div>
-      <div id="login-form">
+      <div class="form-container">
         <q-form
           @submit="onSubmit"
           class="q-gutter-md q-mb-lg"
@@ -30,41 +44,32 @@
             :rules="[val => !!val || 'Field is required']"
           />
 
-          <div>
-            <q-btn
-              :loading="isLoading"
-              class="full-width text-weight-bold"
-              label="Sign In"
-              type="submit"
-              color="primary"
-              rounded
-              no-caps
-              padding="md"
-            />
+          <div class="q-mt-lg">
+            <the-button :loading="isLoading" label="Sign In" size="large" type="primary"/>
           </div>
+          <div class="q-mt-sm">
+            <the-button @click="$router.push({ name: 'register' })"
+                        label="Create New Account"
+                        size="large"
+                        type="secondary"/>
+          </div>
+          <!-- non field alerts -->
+          <the-alert
+            v-if="serializedErrors[1]"
+            :type="'danger'"
+            :message="serializedErrors[1].join(', ')"
+          />
+
+          <!-- text error alerts -->
+          <the-alert
+            v-if="serializedErrors[2]"
+            :type="'danger'"
+            :message="serializedErrors[2]"
+          />
         </q-form>
-
-        <div class="block text-center q-ma-lg">
-          New user?
-          <router-link :to="{ name: 'register' }">Register here</router-link>
-        </div>
-
-        <!-- non field alerts -->
-        <the-alert
-          v-if="serializedErrors[1]"
-          :type="'danger'"
-          :message="serializedErrors[1].join(', ')"
-        />
-
-        <!-- text error alerts -->
-        <the-alert
-          v-if="serializedErrors[2]"
-          :type="'danger'"
-          :message="serializedErrors[2]"
-        />
       </div>
-    </div>
-  </div>
+    </template>
+  </LoginSignupLayout>
 </template>
 <script setup>
 import { computed, ref } from 'vue';
@@ -73,6 +78,8 @@ import { serializeBEError } from 'src/services/utils';
 import TheAlert from 'components/TheAlert.vue';
 import { useRouter } from 'vue-router';
 import { Notify } from 'quasar';
+import LoginSignupLayout from 'layouts/LoginSignupLayout.vue';
+import TheButton from 'components/TheButton.vue';
 
 const router = useRouter();
 
@@ -109,26 +116,16 @@ async function onSubmit() {
 </script>
 
 <style lang="scss" scoped>
-#login-page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+#headline {
+  .logo {
+    width: 170px;
+  }
+  .description {
+    font-size: 22px;
+  }
 }
 
-h1 {
-  font-size: 30px;
-  line-height: 1;
-  margin: 12px 0;
-}
-
-h3 {
-  font-size: 14px;
-  color: $nero-mid;
-  line-height: 1;
-}
-
-#login-form {
-  margin-top: 20px;
+.form-container {
+  margin-top: 40px;
 }
 </style>
