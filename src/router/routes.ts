@@ -26,9 +26,15 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/',
-    name: 'index',
-    component: () => import('pages/index/IndexPage.vue'),
+    component: () => import('layouts/MainLayout.vue'),
     meta: { isRequireAuth: true },
+    children: [
+      {
+        path: '',
+        name: 'index',
+        component: () => import('pages/index/IndexPage.vue'),
+      },
+    ],
   },
 
   // Always leave this as last one,

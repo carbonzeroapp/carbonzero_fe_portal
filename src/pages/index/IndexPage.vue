@@ -1,42 +1,52 @@
 <template>
-  <div>
-    <header class="q-py-md q-px-lg text-white">
-      <div class="profile-image q-mr-md">
-          <q-icon name="account_circle" />
+  <TheHeader></TheHeader>
+  <div class="page-container">
+    <div class="total-carbon-stats">
+      <div class="stats-box">
+        <span class="total">12312</span>
+        <span class="unit">   KgCO2e</span>
       </div>
-      <div class="user-data">
-        <div class="user-name text-weight-bold">
-          Adi Gunawan
-        </div>
-        <div class="bio text-weight-light">
-          User
-        </div>
-      </div>
-    </header>
+      <p class="text-center">So far this month</p>
+    </div>
+
+    <TheActions></TheActions>
   </div>
 </template>
 
 <script setup lang="ts">
+import TheHeader from 'pages/index/components/TheHeader.vue';
+import TheActions from 'pages/index/components/TheActions.vue';
 </script>
 <style lang="scss" scoped>
-header {
-  background-color: $primary;
-  display: flex;
-  align-items: center;
-  height: 100px;
+.page-container {
+  padding: 40px;
 
-  .profile-image {
-    .q-icon {
-      font-size: 50px;
-    }
-  }
+  .total-carbon-stats {
+    margin: 60px auto;
+    text-align: center;
 
-  .user-data {
-    .user-name {
-      font-size: 16px;
+    .stats-box {
+      color: white;
+      overflow-wrap: break-word;
+      background-color: $primary;
+      padding: 60px 20px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+
+      .total {
+        font-size: 80px;
+        font-weight: bold;
+        line-height: 1;
+      }
+      .unit {
+        font-size: 18px;
+        font-style: italic;
+      }
     }
-    .bio {
-      font-size: 12px;
+
+    p {
+      font-size: 18px;
+      font-weight: lighter;
     }
   }
 }
