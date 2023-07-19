@@ -22,8 +22,7 @@ defineProps<{
   flex-direction: column;
   justify-content: space-between;
   background-color: $green-lighter;
-  min-width: 120px;
-  max-width: 120px;
+  width: 120px;
   height: 200px;
   border-radius: 20px;
   padding: 16px;
