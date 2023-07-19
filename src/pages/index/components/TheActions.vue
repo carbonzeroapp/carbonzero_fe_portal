@@ -3,9 +3,9 @@
     <h2>Add Record</h2>
 
     <div class="action-list-container">
-      <ActionItem title="Food" icon-name="restaurant_menu"></ActionItem>
-      <ActionItem title="Food" icon-name="restaurant_menu"></ActionItem>
-      <ActionItem title="Food" icon-name="restaurant_menu"></ActionItem>
+      <ActionItem title="Food" record-type="food"></ActionItem>
+      <ActionItem title="Transport" record-type="transport"></ActionItem>
+      <ActionItem title="Electricity" record-type="electricity"></ActionItem>
     </div>
   </div>
 </template>

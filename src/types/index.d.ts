@@ -23,6 +23,8 @@ export type ButtonTypes = 'primary' | 'secondary' | 'tertiary' | 'disabled';
 
 export type AlertTypes = 'success' | 'info' | 'warning' | 'error';
 
+export type RecordTypes = 'food' | 'transport' | 'electricity';
+
 export interface GenderOption {
   label: string;
   value: number;

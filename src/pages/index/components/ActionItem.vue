@@ -1,24 +1,20 @@
 <template>
   <div class="action-item">
-    <div class="icon">
-      <q-icon :name="iconName" />
-    </div>
+    <RecordIcon :record-type="recordType"></RecordIcon>
     <div class="title">
       {{ title }}
     </div>
   </div>
 </template>
-<script setup>
-defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  iconName: {
-    type: String,
-    required: true,
-  },
-});
+<script lang="ts" setup>
+import RecordIcon from 'components/RecordIcon.vue';
+import { RecordTypes } from 'src/types';
+
+defineProps<{
+  recordType: RecordTypes,
+  title: string
+}>();
+
 </script>
 <style lang="scss" scoped>
 .action-item {
@@ -26,7 +22,8 @@ defineProps({
   flex-direction: column;
   justify-content: space-between;
   background-color: $green-lighter;
-  min-width: 100px;
+  min-width: 120px;
+  max-width: 120px;
   height: 200px;
   border-radius: 20px;
   padding: 16px;
@@ -36,18 +33,6 @@ defineProps({
 
   &:hover {
     scale: 1.05;
-  }
-
-  .icon {
-    display: flex;
-    justify-content: center;
-    color: $green-lighter;
-    align-items: center;
-    background-color: $primary;
-    font-size: 40px;
-    border-radius: 100%;
-    width: 70px;
-    height: 70px;
   }
 
   .title {
