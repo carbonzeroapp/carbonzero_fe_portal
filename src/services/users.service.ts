@@ -14,4 +14,16 @@ export class UsersService extends BaseService {
       throw error;
     }
   }
+
+  static async addActivity(activity) {
+    // eslint-disable-next-line no-useless-catch
+    try {
+      const response = await this.request({ auth: true })
+        .instance.post(`${serviceName}/activities/`, activity);
+
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="action-item">
+  <div class="action-item" @click="onClick">
     <RecordIcon :record-type="recordType"></RecordIcon>
     <div class="title">
       {{ title }}
@@ -9,11 +9,24 @@
 <script lang="ts" setup>
 import RecordIcon from 'components/RecordIcon.vue';
 import { RecordTypes } from 'src/types';
+import { useRouter } from 'vue-router';
 
-defineProps<{
+const router = useRouter();
+
+const props = defineProps<{
+  id: number,
   recordType: RecordTypes,
   title: string
 }>();
+
+function onClick() {
+  router.push({
+    name: 'add-record',
+    params: {
+      recordTypeId: props.id,
+    },
+  });
+}
 
 </script>
 <style lang="scss" scoped>
@@ -37,6 +50,7 @@ defineProps<{
   .title {
     font-size: 16px;
     font-weight: bold;
+    word-break: break-word;
   }
 }
 </style>

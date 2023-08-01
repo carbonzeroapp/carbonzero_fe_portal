@@ -1,7 +1,4 @@
 import { RouteRecordRaw } from 'vue-router';
-import LoginPage from 'pages/login/LoginPage.vue';
-import IntroPage from 'pages/IntroPage.vue';
-import RegisterPage from 'pages/register/RegisterPage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -33,6 +30,10 @@ const routes: RouteRecordRaw[] = [
         path: '',
         name: 'index',
         component: () => import('pages/index/IndexPage.vue'),
+      }, {
+        path: 'add-record/:recordTypeId',
+        name: 'add-record',
+        component: () => import('pages/addRecord/AddRecordPage.vue'),
       },
     ],
   },

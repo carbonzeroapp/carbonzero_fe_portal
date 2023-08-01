@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="navbar-item">
+    <div class="navbar-item" @click="onClick('index')">
       <div class="item-logo">
         <q-icon name="home"/>
       </div>
@@ -29,6 +29,14 @@
   </div>
 </template>
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+function onClick(pageName: string) {
+  router.push({
+    name: pageName,
+  });
+}
 </script>
 <style lang="scss" scoped>
 .navbar-container {

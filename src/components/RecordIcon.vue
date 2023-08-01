@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<Props>(), {});
 
 const recordTypeIconMap: { [key in RecordTypes]: string} = {
   food: 'food_bank',
-  transport: 'directions_bus',
+  transportation: 'directions_bus',
   electricity: 'bolt',
 };
 
